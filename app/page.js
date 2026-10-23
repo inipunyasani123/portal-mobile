@@ -75,7 +75,7 @@ const ALUR = [
   },
   {
     j: 'Serah file + kode',
-    d: 'Setelah pelunasan, kamu menerima file aplikasi dan kode sumbernya. Rilis ke Play Store dan App Store kamu urus dengan akun developer milikmu.',
+    d: 'Setelah pelunasan, kamu menerima file aplikasi dan kode sumbernya, dengan garansi bug 30 hari. Rilis ke Play Store dan App Store kamu urus dengan akun developer milikmu.',
   },
 ];
 
@@ -90,7 +90,11 @@ const TANYA = [
   },
   {
     q: 'Apa yang saya terima setelah aplikasi selesai?',
-    a: 'File aplikasi dan kode sumbernya. Dengan kode sumber di tanganmu, aplikasinya bisa dikembangkan lagi kapan saja.',
+    a: 'File aplikasi dan kode sumbernya. Dengan kode sumber di tanganmu, aplikasinya bisa dikembangkan lagi kapan saja. Bug yang muncul diperbaiki gratis selama 30 hari sejak aplikasi diserahkan.',
+  },
+  {
+    q: 'Apakah ada garansi untuk aplikasinya?',
+    a: 'Ada. Garansi perbaikan bug 30 hari berlaku sejak aplikasi diserahkan. Permintaan fitur baru atau perubahan kode oleh pihak lain tidak termasuk garansi.',
   },
   {
     q: 'Apakah satu aplikasi bisa untuk Android dan iOS sekaligus?',

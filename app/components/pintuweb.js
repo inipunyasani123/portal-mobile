@@ -23,7 +23,7 @@ export const PAKET = {
   teknologi: 'React Native + Expo',
   platform: ['Android', 'iOS', 'web'],
   bayar: 'DP 50% untuk memulai, pelunasan setelah aplikasi jadi',
-  diserahkan: ['File aplikasi', 'Kode sumber'],
+  diserahkan: ['File aplikasi', 'Kode sumber', 'Garansi perbaikan bug 30 hari sejak aplikasi diserahkan'],
 };
 /** Metode bayar PintuWeb (PAYMENT_METHODS di packages.ts); nomor rekening & alamat dompet hanya di invoice. */
 export const METODE_BAYAR = ['QRIS', 'Transfer bank', 'DANA', 'SeaBank', 'USDT'];
