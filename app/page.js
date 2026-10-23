@@ -23,40 +23,40 @@ const FITUR = [
   {
     id: 'perangkat',
     judul: 'Data tersimpan di perangkat',
-    isi: 'Data contoh dan isianmu tersimpan di HP (di web: di peramban), jadi aplikasinya terbuka cepat tanpa server. Ketip tetap bisa mencatat transaksi saat sinyal hilang, lalu menyinkronkannya.',
+    isi: 'Data contoh dan isianmu tersimpan di HP (di web: di peramban), jadi aplikasinya terbuka cepat tanpa server. Ketip punya mode tanpa sinyal: transaksi tetap tercatat, lalu disinkronkan.',
     app: aplikasi.map((a) => a.slug),
     luas: 'lebar',
   },
   {
     id: 'notifikasi',
     judul: 'Notifikasi & pengingat',
-    isi: 'Pengingat jadwal, kabar status, dan tagihan yang muncul di dalam aplikasi (simulasi).',
-    app: ['booking', 'laundry', 'tiket', 'kos'],
+    isi: 'Pengingat jadwal potong, azan, acara, dan tagihan, serta kabar status cucian, yang muncul di dalam aplikasi (simulasi).',
+    app: ['booking', 'laundry', 'tiket', 'masjid', 'kos'],
   },
   {
     id: 'pengelola',
     judul: 'Layar pengelola',
-    isi: 'Sisi pemilik kos, mode atasan untuk menyetujui cuti, dan mode panitia untuk check-in di gerbang.',
+    isi: 'Sisi pemilik kos, mode atasan untuk menyetujui cuti, lembur, dan tukar shift, serta mode panitia untuk check-in di gerbang.',
     app: ['kos', 'absensi', 'tiket'],
   },
   {
     id: 'bayar',
     judul: 'Bayar & bukti bayar',
-    isi: 'QRIS, transfer, atau tunai (simulasi), lalu struk, nota, kuitansi, atau bukti bayar yang bisa dibuka lagi.',
+    isi: 'QRIS, transfer, tunai, sampai kasbon (simulasi), lalu struk, nota, kuitansi, atau bukti bayar yang bisa dibuka lagi.',
     app: ['kasir', 'sekolah', 'antar', 'laundry', 'tiket', 'masjid', 'kos'],
     luas: 'lebar',
   },
   {
     id: 'sensor',
-    judul: 'Kamera, lokasi, foto',
-    isi: 'Pindai e-tiket di gerbang, cek radius gerai saat absen, dan lampirkan foto saat lapor kerusakan.',
-    app: ['tiket', 'absensi', 'kos'],
+    judul: 'Kamera, lokasi, kompas',
+    isi: 'Pindai e-tiket di gerbang, cek radius gerai saat absen, lampirkan foto kerusakan, dan putar kompas kiblat.',
+    app: ['tiket', 'absensi', 'kos', 'masjid'],
   },
   {
     id: 'qr',
     judul: 'Kode QR',
-    isi: 'Kartu member yang kodenya berganti tiap 60 detik dan e-tiket QR yang bisa dialihkan.',
-    app: ['member', 'tiket'],
+    isi: 'Kartu member yang kodenya berganti tiap 60 detik, karcis booking untuk kasir, dan e-tiket QR yang bisa dialihkan.',
+    app: ['member', 'booking', 'tiket'],
   },
 ];
 
@@ -304,7 +304,7 @@ function Widget({ f }) {
         <h3 id={`fitur-${f.id}`} className={`mt-3 text-white ${f.luas === 'besar' ? 'text-[1.9rem] sm:text-[2.6rem]' : 'text-[1.3rem]'}`}>{f.judul}</h3>
         <p className={`mt-2 leading-relaxed text-redup ${f.luas === 'besar' ? 'max-w-md text-[1rem]' : 'text-[0.92rem]'}`}>{f.isi}</p>
         {f.id === 'platform' && (
-          <div className="mt-7">
+          <div className="mt-7 flex flex-1 flex-col justify-center">
             {/* bagan: satu folder kode bercabang ke tiga hasil */}
             <div className="mx-auto w-fit rounded-2xl border border-white/15 bg-white/8 px-4 py-3 text-center">
               <p className="font-mono text-[0.8rem] text-limau">src/app/</p>
@@ -337,8 +337,8 @@ function Widget({ f }) {
             </ul>
           )}
           {semua && (
-            <ul className={`mt-3 flex flex-wrap ${f.luas === 'besar' ? 'gap-2.5' : 'gap-1.5'}`} aria-hidden="true">
-              {daftar.map((a) => <li key={a.slug}><Ikon a={a} className={f.luas === 'besar' ? 'h-11 w-11' : 'h-7 w-7'} sizes={f.luas === 'besar' ? '44px' : '28px'} /></li>)}
+            <ul className={`mt-3 flex flex-wrap ${f.luas === 'besar' ? 'gap-2' : 'gap-1.5'}`} aria-hidden="true">
+              {daftar.map((a) => <li key={a.slug}><Ikon a={a} className={f.luas === 'besar' ? 'h-10 w-10' : 'h-7 w-7'} sizes={f.luas === 'besar' ? '40px' : '28px'} /></li>)}
             </ul>
           )}
         </div>
@@ -547,7 +547,7 @@ export default function PortalMobile() {
               </div>
             </article>
             <p className="mt-6 text-sm text-tinta-3">
-              Paket lain ada di <a href={`${PINTUWEB}/paket`} className="font-semibold text-tinta underline underline-offset-4">halaman Paket PintuWeb</a>, dan langkah pembayarannya di <a href={`${PINTUWEB}/pembayaran`} className="font-semibold text-tinta underline underline-offset-4">Cara Bayar</a>.
+              Paket ini juga tercantum di <a href={`${PINTUWEB}/paket#aplikasi-mobile`} className="font-semibold text-tinta underline underline-offset-4">halaman Paket PintuWeb</a>, bersama paket lainnya, dan langkah pembayarannya di <a href={`${PINTUWEB}/pembayaran`} className="font-semibold text-tinta underline underline-offset-4">Cara Bayar</a>.
             </p>
           </div>
         </section>
