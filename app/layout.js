@@ -9,7 +9,7 @@ const sans = Funnel_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '70
 
 // Merek di hasil pencarian & pratinjau tautan = PintuWeb. Jumlah demo dihitung dari data, bukan ditulis tangan.
 const TITLE = `Contoh Aplikasi Mobile: ${aplikasi.length} Demo Siap Coba | PintuWeb`;
-const DESCRIPTION = 'Sepuluh demo aplikasi Android & iOS: kasir, booking salon, orang tua murid, member kafe, pesan-antar, laundry, absensi, tiket, masjid, dan kos.';
+const DESCRIPTION = 'Sepuluh contoh aplikasi HP untuk Android & iPhone: kasir, booking, sekolah, member kafe, pesan-antar, laundry, absensi, tiket, masjid, dan kos.';
 
 // CollectionPage + daftar demonya (ItemList) + jejak. Data dari aplikasi-data, jadi ikut bertambah sendiri.
 const jsonLd = {

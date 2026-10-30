@@ -19,107 +19,66 @@ const SARINGAN = [{ id: 'semua', label: 'Semua', ket: '', jumlah: JUMLAH }, ...J
 const FITUR = [
   {
     id: 'platform',
-    judul: 'Satu kode, tiga platform',
-    isi: `Semua aplikasi dibuat dengan ${PAKET.teknologi}. Kode yang sama menjadi aplikasi Android, iOS, dan versi web; yang kamu coba di galeri ini adalah versi webnya.`,
+    judul: 'Dipasang di Android & iPhone',
+    isi: 'Satu aplikasi yang bisa dipasang di HP Android dan iPhone. Di sini kamu mencoba versi webnya.',
     app: aplikasi.map((a) => a.slug),
     luas: 'besar',
   },
   {
     id: 'perangkat',
-    judul: 'Data tersimpan di perangkat',
-    isi: 'Data contoh dan isianmu tersimpan di HP (di web: di peramban), jadi aplikasinya terbuka cepat tanpa server. Ketip punya mode tanpa sinyal: transaksi tetap tercatat, lalu disinkronkan.',
+    judul: 'Data tersimpan di HP',
+    isi: 'Aplikasi terbuka cepat. Ketip tetap bisa mencatat transaksi saat tidak ada sinyal.',
     app: aplikasi.map((a) => a.slug),
     luas: 'lebar',
   },
   {
     id: 'notifikasi',
-    judul: 'Notifikasi & pengingat',
-    isi: 'Pengingat jadwal potong, azan, acara, dan tagihan, serta kabar status cucian, yang muncul di dalam aplikasi (simulasi).',
+    judul: 'Pengingat',
+    isi: 'Pengingat jadwal, azan, acara, dan tagihan (simulasi).',
     app: ['booking', 'laundry', 'tiket', 'masjid', 'kos'],
   },
   {
     id: 'pengelola',
     judul: 'Layar pengelola',
-    isi: 'Sisi pemilik kos, mode atasan untuk menyetujui cuti, lembur, dan tukar shift, serta mode panitia untuk check-in di gerbang.',
+    isi: 'Pemilik kos, atasan, dan panitia punya layar khusus.',
     app: ['kos', 'absensi', 'tiket'],
   },
   {
     id: 'bayar',
-    judul: 'Bayar & bukti bayar',
-    isi: 'QRIS, transfer, tunai, sampai kasbon (simulasi), lalu struk, nota, kuitansi, atau bukti bayar yang bisa dibuka lagi.',
+    judul: 'Bayar dan bukti bayar',
+    isi: 'QRIS, transfer, atau tunai, lalu struk atau nota (simulasi).',
     app: ['kasir', 'sekolah', 'antar', 'laundry', 'tiket', 'masjid', 'kos'],
     luas: 'lebar',
   },
   {
     id: 'sensor',
     judul: 'Kamera, lokasi, kompas',
-    isi: 'Pindai e-tiket di gerbang, cek radius gerai saat absen, lampirkan foto kerusakan, dan putar kompas kiblat.',
+    isi: 'Pindai tiket, cek lokasi saat absen, foto kerusakan, dan kompas kiblat.',
     app: ['tiket', 'absensi', 'kos', 'masjid'],
   },
   {
     id: 'qr',
     judul: 'Kode QR',
-    isi: 'Kartu member yang kodenya berganti tiap 60 detik, karcis booking untuk kasir, dan e-tiket QR yang bisa dialihkan.',
+    isi: 'Kartu member, karcis booking, dan e-tiket memakai kode QR.',
     app: ['member', 'booking', 'tiket'],
   },
 ];
 
 const ALUR = [
-  {
-    j: 'Konsultasi',
-    d: `Ceritakan usahamu dan siapa yang akan memakai aplikasinya lewat WhatsApp. Kita sepakati layar, fitur, harga, dan jadwalnya; ${PAKET.bayar.split(',')[0]}.`,
-  },
-  {
-    j: 'Rancangan',
-    d: 'Susunan layar dan alur tiap pengguna dirancang lebih dulu, mengikuti cara kerja usahamu.',
-  },
-  {
-    j: 'Pembuatan & uji',
-    d: `Aplikasi dibangun dengan ${PAKET.teknologi}, satu kode untuk Android, iOS, dan web, lalu diuji sebelum diserahkan.`,
-  },
-  {
-    j: 'Serah file + kode',
-    d: 'Setelah pelunasan, kamu menerima file aplikasi dan kode sumbernya, dengan garansi bug 30 hari. Rilis ke Play Store dan App Store kamu urus dengan akun developer milikmu.',
-  },
+  { j: 'Konsultasi', d: `Ceritakan usahamu lewat WhatsApp. Kita sepakati fitur, harga, dan jadwal; ${PAKET.bayar.split(',')[0]}.` },
+  { j: 'Rancangan', d: 'Kami rancang tampilan layar sesuai cara kerja usahamu.' },
+  { j: 'Pembuatan dan uji', d: 'Aplikasi dibuat dan dicoba dulu sebelum diserahkan.' },
+  { j: 'Serah terima', d: 'Setelah lunas, kamu terima file aplikasi dan kode sumbernya. Ada garansi bug 30 hari.' },
 ];
 
 const TANYA = [
-  {
-    q: 'Berapa biaya membuat aplikasi mobile seperti ini?',
-    a: `Paket ${PAKET.nama}: ${PAKET.mulai} – ${PAKET.sampai}, dikerjakan ${PAKET.waktu}. Posisi harga di rentang itu mengikuti cakupan aplikasinya dan disepakati sebelum pengerjaan dimulai; invoice dikirim sebelum pembayaran.`,
-  },
-  {
-    q: 'Apakah dibantu rilis ke Play Store?',
-    a: 'Tidak. PintuWeb menyerahkan file aplikasi beserta kode sumbernya. Rilis ke Google Play Store dan Apple App Store diurus sendiri oleh klien dengan akun developer milik klien, jadi aplikasinya terdaftar atas nama usahamu sendiri.',
-  },
-  {
-    q: 'Apa yang saya terima setelah aplikasi selesai?',
-    a: 'File aplikasi dan kode sumbernya. Dengan kode sumber di tanganmu, aplikasinya bisa dikembangkan lagi kapan saja. Bug yang muncul diperbaiki gratis selama 30 hari sejak aplikasi diserahkan.',
-  },
-  {
-    q: 'Apakah ada garansi untuk aplikasinya?',
-    a: 'Ada. Garansi perbaikan bug 30 hari berlaku sejak aplikasi diserahkan. Permintaan fitur baru atau perubahan kode oleh pihak lain tidak termasuk garansi.',
-  },
-  {
-    q: 'Apakah satu aplikasi bisa untuk Android dan iOS sekaligus?',
-    a: `Bisa. Aplikasinya dibuat dengan ${PAKET.teknologi}: satu kode untuk Android, iOS, dan web. ${NAMA_JUMLAH} demo di halaman ini adalah versi web dari kode yang sama.`,
-  },
-  {
-    q: 'Bagaimana cara bayarnya?',
-    a: `${PAKET.bayar}. Pembayaran lewat ${METODE_BAYAR.slice(0, -1).join(', ')}, atau ${METODE_BAYAR.at(-1)}; nomor rekening atau alamat dompet tertulis di invoice.`,
-  },
-  {
-    q: 'Apakah data di demo ini sungguhan?',
-    a: 'Tidak. Semua usaha, nama, dan angka di demo rekaan, dan pembayarannya simulasi. Data contoh serta isianmu hanya tersimpan di perangkatmu sendiri.',
-  },
-  {
-    q: 'Bisakah demonya dicoba di HP?',
-    a: 'Bisa. Buka tautan demonya di peramban HP, aplikasinya tampil layar penuh. Di layar lebar, tiap demo tampil dalam bingkai ponsel dengan kode QR untuk dibuka di HP.',
-  },
-  {
-    q: 'Apakah aplikasi saya butuh server?',
-    a: 'Demo di sini berjalan tanpa server karena datanya disimpan di perangkat. Kalau aplikasimu perlu data bersama di banyak HP, misalnya pemilik dan penghuni melihat tagihan yang sama, kebutuhan itu dibahas saat konsultasi dan biayanya dicantumkan di penawaran.',
-  },
+  { q: 'Berapa biaya membuat aplikasi?', a: `${PAKET.mulai} – ${PAKET.sampai}, selesai ${PAKET.waktu}. Harga pastinya disepakati sebelum mulai.` },
+  { q: 'Bisa dipasang di Android dan iPhone?', a: 'Bisa. Satu aplikasi untuk HP Android dan iPhone.' },
+  { q: 'Apakah dibantu rilis ke Play Store?', a: 'Tidak. Kamu yang mengurus rilisnya dengan akun developer atas nama usahamu. Kami serahkan filenya.' },
+  { q: 'Apa yang saya terima setelah selesai?', a: 'File aplikasi dan kode sumbernya. Bug diperbaiki gratis selama 30 hari.' },
+  { q: 'Bagaimana cara bayarnya?', a: `${PAKET.bayar}. Bisa lewat ${METODE_BAYAR.slice(0, -1).join(', ')}, atau ${METODE_BAYAR.at(-1)}.` },
+  { q: 'Apakah data di demo ini sungguhan?', a: 'Tidak. Semua usaha dan angkanya rekaan. Isianmu hanya tersimpan di perangkatmu.' },
+  { q: 'Bisa dicoba di HP?', a: 'Bisa. Buka tautan demonya di HP, aplikasinya tampil layar penuh.' },
 ];
 
 const faqLd = {
@@ -317,15 +276,14 @@ function Widget({ f }) {
           <div className="mt-7 flex flex-1 flex-col justify-center">
             {/* bagan: satu folder kode bercabang ke tiga hasil */}
             <div className="mx-auto w-fit rounded-2xl border border-white/15 bg-white/8 px-4 py-3 text-center">
-              <p className="font-mono text-[0.8rem] text-limau">src/app/</p>
-              <p className="mt-0.5 text-sm font-semibold text-white">satu kode {PAKET.teknologi}</p>
+              <p className="text-sm font-semibold text-white">Satu aplikasi</p>
             </div>
             <div className="cabang mx-auto h-8 w-2/3" aria-hidden="true" />
             <ul className="grid grid-cols-3 gap-2.5" aria-label="Hasilnya">
               {PAKET.platform.map((p, i) => (
                 <li key={p} className="rounded-2xl border border-white/10 bg-white/6 px-2 py-4 text-center">
                   <span className="block font-display text-lg font-semibold text-white sm:text-xl">{p}</span>
-                  <span className="mt-0.5 block text-xs text-redup">{['untuk HP Android', 'untuk iPhone', 'demo di galeri ini'][i]}</span>
+                  <span className="mt-0.5 block text-xs text-redup">{['untuk HP Android', 'untuk iPhone', 'demo di sini'][i]}</span>
                 </li>
               ))}
             </ul>
@@ -396,15 +354,15 @@ export default function PortalMobile() {
         <section id="pahlawan" aria-labelledby="judul-utama" className="relative">
           <div className="wadah grid gap-8 pb-10 pt-6 sm:pt-14 md:gap-10 md:pb-14 lg:grid-cols-12 lg:items-center lg:gap-8 lg:pb-20 lg:pt-14">
             <div className="min-w-0 lg:col-span-7">
-              <p className="label">Galeri aplikasi mobile · {JUMLAH} demo</p>
+              <p className="label">Aplikasi HP · {JUMLAH} demo</p>
               <h1 id="judul-utama" className="mt-3 text-[2.05rem] sm:mt-4 sm:text-[3.6rem] lg:text-[4.1rem]">
-                {NAMA_JUMLAH} aplikasi Android &amp; iOS yang bisa kamu coba sekarang.
+                {NAMA_JUMLAH} aplikasi HP yang bisa kamu coba sekarang.
               </h1>
               <p className="mt-3 text-[0.98rem] leading-relaxed text-tinta-2 md:hidden">
-                Kasir warung sampai aplikasi kos, tiap demo bisa kamu buka di HP.
+                Bisa dipasang di HP Android dan iPhone. Coba demonya di HP-mu.
               </p>
               <p className="mt-5 hidden max-w-xl text-[1.06rem] leading-relaxed text-tinta-2 md:block">
-                Kasir warung, booking pangkas rambut, aplikasi orang tua murid, sampai jadwal salat masjid. Tiap aplikasi dibuat dengan {PAKET.teknologi}: satu kode untuk Android, iOS, dan web. Usahanya fiktif, datanya tersimpan di perangkatmu, jadi silakan coba sepuasnya.
+                Bisa dipasang di HP Android dan iPhone. Semua usahanya fiktif, jadi silakan coba sepuasnya.
               </p>
               <div className="mt-5 flex flex-wrap items-center gap-3 md:mt-7">
                 <a href="#aplikasi" className="tombol tombol-tinta">Buka rak aplikasi</a>
@@ -414,7 +372,7 @@ export default function PortalMobile() {
 
               {/* Ponsel: strip demo yang bisa digeser, tepat di bawah tombol utama */}
               <div className="mt-5 md:hidden">
-                <p id="strip-judul" className="text-xs font-bold uppercase tracking-[0.14em] text-tinta-3">Geser, lalu ketuk aplikasinya</p>
+                <p id="strip-judul" className="text-xs font-bold uppercase tracking-[0.14em] text-tinta-3">Geser, lalu ketuk</p>
                 <ul aria-labelledby="strip-judul" className="strip -mx-4 mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2">
                   {aplikasi.map((a) => (
                     <li key={a.slug} className="w-[6.4rem] shrink-0 snap-start">
@@ -451,9 +409,9 @@ export default function PortalMobile() {
             <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
               <div className="lg:col-span-7">
                 <p className="label">Rak aplikasi</p>
-                <h2 id="judul-rak" className="mt-3 text-[2.1rem] sm:text-5xl">{NAMA_JUMLAH} aplikasi, {NAMA_JUMLAH.toLowerCase()} pekerjaan yang dipermudah</h2>
+                <h2 id="judul-rak" className="mt-3 text-[2.1rem] sm:text-5xl">{NAMA_JUMLAH} aplikasi untuk dicoba</h2>
                 <p className="mt-4 max-w-2xl text-tinta-2">
-                  Tiap kartu memuat layar asli aplikasinya. Ketuk <strong className="font-semibold text-tinta">Buka</strong> untuk mencobanya di tab baru, atau langsung ke salah satu layarnya. Semua usaha di sini fiktif.
+                  Ketuk <strong className="font-semibold text-tinta">Buka</strong> untuk mencobanya. Semua usaha di sini fiktif.
                 </p>
               </div>
               <div className="min-w-0 lg:col-span-5">
@@ -473,10 +431,10 @@ export default function PortalMobile() {
             <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
               <div className="lg:col-span-7">
                 <p className="label">Fitur</p>
-                <h2 id="judul-fitur" className="mt-3 text-[2.1rem] sm:text-5xl">Yang sudah bisa kamu sentuh di {NAMA_JUMLAH.toLowerCase()} demo</h2>
+                <h2 id="judul-fitur" className="mt-3 text-[2.1rem] sm:text-5xl">Yang bisa kamu coba</h2>
               </div>
               <p className="text-redup lg:col-span-5">
-                Tiap widget menyebut aplikasi mana yang memilikinya. Ketuk namanya untuk melompat ke kartunya, lalu coba sendiri.
+                Ketuk nama aplikasi untuk melihatnya.
               </p>
             </div>
             <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
@@ -490,9 +448,9 @@ export default function PortalMobile() {
           <div className="wadah grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
             <div className="lg:col-span-5">
               <p className="label">Alur kerja</p>
-              <h2 id="judul-alur" className="mt-3 text-[2.1rem] sm:text-5xl">Dari obrolan WhatsApp sampai file aplikasi di tanganmu</h2>
+              <h2 id="judul-alur" className="mt-3 text-[2.1rem] sm:text-5xl">Dari obrolan sampai aplikasi jadi</h2>
               <p className="mt-4 text-tinta-2">
-                Empat langkah, dikerjakan {PAKET.waktu}. Kamu memegang kode sumbernya, dan aplikasinya dirilis dengan akun developer milikmu sendiri.
+                Empat langkah, selesai {PAKET.waktu}.
               </p>
               <a href={WA} target="_blank" rel="noopener noreferrer" className="tombol tombol-tinta mt-7">Mulai konsultasi</a>
             </div>
@@ -524,8 +482,8 @@ export default function PortalMobile() {
           <div className="wadah">
             <div className="max-w-2xl">
               <p className="label">Paket &amp; harga</p>
-              <h2 id="judul-harga" className="mt-3 text-[2.1rem] sm:text-5xl">Satu paket, dari aplikasi sederhana sampai yang lengkap</h2>
-              <p className="mt-4 text-tinta-2">Harga berlaku per {HARGA_PER}. Posisi harga di rentang itu mengikuti cakupan aplikasinya dan disepakati sebelum pengerjaan dimulai.</p>
+              <h2 id="judul-harga" className="mt-3 text-[2.1rem] sm:text-5xl">Satu paket untuk semua aplikasi</h2>
+              <p className="mt-4 text-tinta-2">Harga berlaku per {HARGA_PER}. Harga pastinya mengikuti kebutuhan aplikasimu.</p>
             </div>
 
             <article aria-labelledby="judul-paket" className="mt-10 overflow-hidden rounded-[2rem] border border-garis bg-kertas shadow-[0_30px_60px_-44px_rgb(11_13_18/0.55)]">
@@ -533,7 +491,7 @@ export default function PortalMobile() {
                 <span className="ikon grid h-20 w-20 shrink-0 place-items-center bg-limau text-tinta sm:h-24 sm:w-24" aria-hidden="true"><GlyphRak className="h-11 w-11 sm:h-12 sm:w-12" /></span>
                 <div className="min-w-0 flex-1 basis-56">
                   <h3 id="judul-paket" className="text-[1.6rem] sm:text-[2rem]">{PAKET.nama}</h3>
-                  <p className="mt-1 text-tinta-3">PintuWeb · dibuat dengan {PAKET.teknologi}</p>
+                  <p className="mt-1 text-tinta-3">Bisa dipasang di HP Android dan iPhone</p>
                 </div>
                 <a href={wa(`Halo PintuWeb, saya tertarik paket "${PAKET.nama}". Boleh minta info lebih lanjut?`)} target="_blank" rel="noopener noreferrer" className="tombol tombol-limau w-full sm:w-auto">Tanya paket ini</a>
               </div>
@@ -566,14 +524,14 @@ export default function PortalMobile() {
                   <h4 className="text-lg">Yang kamu terima</h4>
                   <ul className="mt-3 space-y-2 text-[0.95rem] leading-snug text-tinta-2">
                     {PAKET.diserahkan.map((d) => <li key={d} className="flex gap-2.5"><span className="text-limau-tua"><Cek /></span><span>{d}</span></li>)}
-                    <li className="flex gap-2.5"><span className="text-limau-tua"><Cek /></span><span>Satu kode untuk Android, iOS, dan web</span></li>
+                    <li className="flex gap-2.5"><span className="text-limau-tua"><Cek /></span><span>Aplikasi untuk Android dan iPhone</span></li>
                   </ul>
                 </div>
                 <div>
                   <h4 className="text-lg">Yang kamu urus sendiri</h4>
                   <ul className="mt-3 space-y-2 text-[0.95rem] leading-snug text-tinta-2">
-                    <li className="flex gap-2.5"><span aria-hidden="true" className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-tinta-3" /><span>Akun developer Google Play dan Apple atas nama usahamu</span></li>
-                    <li className="flex gap-2.5"><span aria-hidden="true" className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-tinta-3" /><span>Rilis aplikasinya ke Play Store dan App Store</span></li>
+                    <li className="flex gap-2.5"><span aria-hidden="true" className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-tinta-3" /><span>Akun developer Google dan Apple</span></li>
+                    <li className="flex gap-2.5"><span aria-hidden="true" className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-tinta-3" /><span>Rilis ke Play Store dan App Store</span></li>
                   </ul>
                 </div>
                 <div>
@@ -581,12 +539,12 @@ export default function PortalMobile() {
                   <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Metode pembayaran">
                     {METODE_BAYAR.map((m) => <li key={m} className="rounded-full border border-garis bg-kaca px-3 py-1 text-sm font-semibold text-tinta-2">{m}</li>)}
                   </ul>
-                  <p className="mt-3 text-sm leading-relaxed text-tinta-3">{PAKET.bayar}. Nomor rekening atau alamat dompet tertulis di invoice.</p>
+                  <p className="mt-3 text-sm leading-relaxed text-tinta-3">{PAKET.bayar}.</p>
                 </div>
               </div>
             </article>
             <p className="mt-6 text-sm text-tinta-3">
-              Paket ini juga tercantum di <a href={`${PINTUWEB}/paket#aplikasi-mobile`} className="font-semibold text-tinta underline underline-offset-4">halaman Paket PintuWeb</a>, bersama paket lainnya, dan langkah pembayarannya di <a href={`${PINTUWEB}/pembayaran`} className="font-semibold text-tinta underline underline-offset-4">Cara Bayar</a>.
+              Lihat juga <a href={`${PINTUWEB}/paket#aplikasi-mobile`} className="font-semibold text-tinta underline underline-offset-4">halaman Paket</a> dan <a href={`${PINTUWEB}/pembayaran`} className="font-semibold text-tinta underline underline-offset-4">Cara Bayar</a>.
             </p>
           </div>
         </section>
@@ -595,7 +553,7 @@ export default function PortalMobile() {
         <section id="tanya" aria-labelledby="judul-tanya" className="scroll-mt-16 border-t border-garis bg-kertas py-14 sm:py-20">
           <div className="wadah max-w-3xl">
             <p className="label">Tanya jawab</p>
-            <h2 id="judul-tanya" className="mt-3 text-[2.1rem] sm:text-5xl">Sebelum aplikasimu dibuat</h2>
+            <h2 id="judul-tanya" className="mt-3 text-[2.1rem] sm:text-5xl">Pertanyaan umum</h2>
             <div className="mt-8 divide-y divide-garis border-y border-garis">
               {TANYA.map((t, i) => (
                 <details key={t.q} name="faq-mobile" open={i === 0} className="tanya group">
@@ -617,9 +575,9 @@ export default function PortalMobile() {
               {aplikasi.map((a) => <li key={a.slug}><Ikon a={a} className="h-11 w-11" sizes="44px" /></li>)}
               <li><span className="ikon grid h-11 w-11 place-items-center bg-limau font-display text-2xl font-bold text-tinta">+</span></li>
             </ul>
-            <h2 id="judul-ajakan" className="mx-auto mt-8 max-w-2xl text-[2.1rem] sm:text-5xl">Aplikasi usahamu berikutnya di rak ini</h2>
+            <h2 id="judul-ajakan" className="mx-auto mt-8 max-w-2xl text-[2.1rem] sm:text-5xl">Aplikasi usahamu bisa jadi yang berikutnya</h2>
             <p className="mx-auto mt-4 max-w-xl text-redup">
-              Ceritakan siapa yang akan memakai aplikasinya dan pekerjaan apa yang ingin dipermudah. Kami bantu menentukan layarnya, lalu aplikasimu dikerjakan {PAKET.waktu}.
+              Ceritakan apa yang ingin dipermudah. Aplikasimu selesai {PAKET.waktu}.
             </p>
             <a href={WA} target="_blank" rel="noopener noreferrer" className="tombol tombol-limau mt-8">Chat WhatsApp {WA_DISPLAY}</a>
             <p className="mt-3 text-sm text-redup">Jam kerja {JAM_KERJA}</p>
@@ -631,7 +589,7 @@ export default function PortalMobile() {
         <div className="wadah grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3">
           <div className="col-span-2 sm:col-span-1">
             <p className="flex items-center gap-2.5 text-white"><Logo gelap /></p>
-            <p className="mt-3 max-w-xs text-sm leading-relaxed">{NAMA_JUMLAH} demo aplikasi Android &amp; iOS buatan PintuWeb, dari kasir warung sampai aplikasi kos.</p>
+            <p className="mt-3 max-w-xs text-sm leading-relaxed">{NAMA_JUMLAH} demo aplikasi HP yang bisa kamu coba.</p>
           </div>
           <nav aria-labelledby="kaki-lanjut" className="text-sm">
             <p id="kaki-lanjut" className="label">Lanjut di PintuWeb</p>
