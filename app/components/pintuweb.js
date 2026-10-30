@@ -31,16 +31,16 @@ export const METODE_BAYAR = ['QRIS', 'Transfer bank', 'DANA', 'SeaBank', 'USDT']
 /** Galeri yang tayang di www.pintuweb.id/<path> (lihat lib/portals.ts di PintuWeb). */
 export const GALERI = [
   { path: 'landing-page', label: 'Landing Page' },
-  { path: 'link-in-bio', label: 'Link in Bio' },
-  { path: 'kontes-desain', label: 'Kontes Desain' },
-  { path: 'undangan-digital', label: 'Undangan Digital' },
-  { path: 'website-portofolio', label: 'Website Portofolio' },
-  { path: 'website-reservasi', label: 'Website Reservasi' },
-  { path: 'website-properti', label: 'Website Properti' },
-  { path: 'aplikasi-to-do', label: 'Aplikasi To-Do' },
   { path: 'toko-online', label: 'Toko Online' },
-  { path: 'menu-digital', label: 'Menu Digital' },
   { path: 'aplikasi-mobile', label: 'Aplikasi Mobile' },
+  { path: 'menu-digital', label: 'Menu Digital' },
+  { path: 'link-in-bio', label: 'Link in Bio' },
+  { path: 'kontes-desain', label: 'Konsep Desain' },
+  { path: 'undangan-digital', label: 'Undangan Digital' },
+  { path: 'website-portofolio', label: 'Portofolio Pribadi' },
+  { path: 'website-reservasi', label: 'Reservasi & Booking' },
+  { path: 'website-properti', label: 'Properti' },
+  { path: 'aplikasi-to-do', label: 'To-Do & Produktivitas' },
 ];
 
 export const GALERI_LAIN = GALERI.filter((g) => g.path !== 'aplikasi-mobile');
@@ -51,4 +51,9 @@ export const LANJUT = [
   { href: `${PINTUWEB}/services/aplikasi-android-ios`, label: 'Jasa pembuatan aplikasi Android & iOS' },
   { href: `${PINTUWEB}/pembayaran`, label: 'Cara bayar' },
   { href: `${PINTUWEB}/demo#mobile`, label: 'Semua demo PintuWeb' },
+];
+
+/** Artikel yang relevan dengan portal ini (di bawah "Baca juga"). */
+export const BACA_JUGA = [
+  { href: `${PINTUWEB}/artikel/harga-pembuatan-aplikasi`, label: 'Berapa harga pembuatan aplikasi?' },
 ];

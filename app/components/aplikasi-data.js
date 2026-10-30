@@ -5,18 +5,21 @@
 // aplikasi itu (app.json / ikon).
 const B = '/aplikasi-mobile/images';
 
+// Pengelompokan menurut usaha pengguna aplikasinya (bukan jenis teknisnya).
 export const JENIS = [
-  { id: 'usaha', label: 'Usaha', ket: 'jualan, kafe, antar makanan, tim gerai' },
-  { id: 'layanan', label: 'Layanan', ket: 'pangkas rambut, laundry, kos' },
-  { id: 'komunitas', label: 'Komunitas', ket: 'sekolah, masjid, acara' },
+  { id: 'toko', label: 'Toko & Kuliner', ket: 'warung, kafe, pesan-antar makanan' },
+  { id: 'jasa', label: 'Jasa & Layanan', ket: 'pangkas rambut, salon, laundry' },
+  { id: 'pendidikan', label: 'Pendidikan & Komunitas', ket: 'sekolah, masjid' },
+  { id: 'kantor', label: 'Kantor & Properti', ket: 'absensi karyawan, kos' },
+  { id: 'acara', label: 'Acara & Hiburan', ket: 'tiket konser dan festival' },
 ];
+const KELOMPOK = { kasir: 'toko', member: 'toko', antar: 'toko', booking: 'jasa', laundry: 'jasa', sekolah: 'pendidikan', masjid: 'pendidikan', absensi: 'kantor', kos: 'kantor', tiket: 'acara' };
 
 export const aplikasi = [
   {
     slug: 'kasir',
     nama: 'Ketip',
-    jenis: 'usaha',
-    kategori: 'Kasir warung',
+        kategori: 'Kasir warung',
     tagline: 'Kasir saku untuk warung: transaksi kilat, stok terpantau.',
     latar: 'Contohnya Warung Pring Kuning, warung kopi & kelontong di Tulungagung.',
     fitur: [
@@ -34,8 +37,7 @@ export const aplikasi = [
   {
     slug: 'booking',
     nama: 'Kursi Putar',
-    jenis: 'layanan',
-    kategori: 'Booking pangkas & salon',
+        kategori: 'Booking pangkas & salon',
     tagline: 'Booking jam kosong atau ambil nomor antre, lalu bayar di kasir.',
     latar: 'Contohnya pangkas rambut & salon di Blitar.',
     fitur: [
@@ -47,13 +49,12 @@ export const aplikasi = [
     halaman: [['/layanan', 'Layanan'], ['/booking', 'Booking'], ['/antre', 'Antre'], ['/kapster', 'Kapster']],
     warna: { bg: '#7A1F2B', aksen: '#9FD3B8' },
     ikon: `${B}/ikon/booking.webp`,
-    layar: [[`${B}/layar/booking-1.webp`, 'Beranda'], [`${B}/layar/booking-2.webp`, 'Kapster']],
+    layar: [[`${B}/layar/booking-1.webp`, 'Beranda'], [`${B}/layar/booking-2.webp`, 'Layanan']],
   },
   {
     slug: 'sekolah',
     nama: 'Kapur',
-    jenis: 'komunitas',
-    kategori: 'Aplikasi orang tua murid',
+        kategori: 'Aplikasi orang tua murid',
     tagline: 'Buku penghubung sekolah pindah ke ponsel.',
     latar: 'Contohnya SD Rindang Jati di Kediri, dengan dua anak dalam satu akun.',
     fitur: [
@@ -69,8 +70,7 @@ export const aplikasi = [
   {
     slug: 'member',
     nama: 'Kopi Blirik',
-    jenis: 'usaha',
-    kategori: 'Member & poin kafe',
+        kategori: 'Member & poin kafe',
     tagline: 'Kartu member, bintik, dan voucher untuk jaringan kafe.',
     latar: 'Contohnya jaringan kafe dengan outlet di lima kota Jawa Timur.',
     fitur: [
@@ -86,8 +86,7 @@ export const aplikasi = [
   {
     slug: 'antar',
     nama: 'Pincuk',
-    jenis: 'usaha',
-    kategori: 'Pesan-antar kuliner',
+        kategori: 'Pesan-antar kuliner',
     tagline: 'Masakan warung tetangga, diantar selagi hangat.',
     latar: 'Contohnya warung-warung di Tirtalaya, kota rekaan di Jawa Timur.',
     fitur: [
@@ -103,8 +102,7 @@ export const aplikasi = [
   {
     slug: 'laundry',
     nama: 'Busa Ungu',
-    jenis: 'layanan',
-    kategori: 'Pelanggan laundry',
+        kategori: 'Pelanggan laundry',
     tagline: 'Cucian dipantau dari keranjang sampai lemari.',
     latar: 'Contohnya laundry kiloan & satuan dengan layanan jemput-antar.',
     fitur: [
@@ -120,8 +118,7 @@ export const aplikasi = [
   {
     slug: 'absensi',
     nama: 'Gilir',
-    jenis: 'usaha',
-    kategori: 'Absensi & HR karyawan',
+        kategori: 'Absensi & HR karyawan',
     tagline: 'Absen, shift, cuti, dan slip gaji dalam satu genggaman.',
     latar: 'Contohnya Roti Lintang Pagi, toko roti dengan tiga gerai dan dapur pusat di Tulungagung.',
     fitur: [
@@ -132,13 +129,12 @@ export const aplikasi = [
     halaman: [['/jadwal', 'Jadwal shift'], ['/pengajuan', 'Pengajuan'], ['/gaji', 'Slip gaji'], ['/atasan', 'Mode atasan']],
     warna: { bg: '#1E1A15', aksen: '#EFDCA6' },
     ikon: `${B}/ikon/absensi.webp`,
-    layar: [[`${B}/layar/absensi-1.webp`, 'Absen'], [`${B}/layar/absensi-2.webp`, 'Slip gaji']],
+    layar: [[`${B}/layar/absensi-1.webp`, 'Jadwal shift'], [`${B}/layar/absensi-2.webp`, 'Slip gaji']],
   },
   {
     slug: 'tiket',
     nama: 'Karcis Wetan',
-    jenis: 'komunitas',
-    kategori: 'Tiket acara',
+        kategori: 'Tiket acara',
     tagline: 'Tiket acara Jawa Timur, dari pesan sampai sobek di gerbang.',
     latar: 'Contohnya enam acara rekaan: konser, seminar, festival kuliner, lari, pameran, dan komedi.',
     fitur: [
@@ -154,8 +150,7 @@ export const aplikasi = [
   {
     slug: 'masjid',
     nama: 'Nurul Ufuk',
-    jenis: 'komunitas',
-    kategori: 'Aplikasi jemaah masjid',
+        kategori: 'Aplikasi jemaah masjid',
     tagline: 'Jadwal salat akurat, kas terbuka, jemaah makin dekat.',
     latar: 'Contohnya masjid rekaan di Tulungagung; jadwal salatnya dihitung sungguhan.',
     fitur: [
@@ -171,8 +166,7 @@ export const aplikasi = [
   {
     slug: 'kos',
     nama: 'Grendel',
-    jenis: 'layanan',
-    kategori: 'Aplikasi kos',
+        kategori: 'Aplikasi kos',
     tagline: 'Satu aplikasi untuk penghuni dan pemilik kos.',
     latar: 'Contohnya Kos Ubin Kembang, 12 kamar di Tulungagung. Coba dua sisinya.',
     fitur: [
@@ -186,7 +180,7 @@ export const aplikasi = [
     ikon: `${B}/ikon/kos.webp`,
     layar: [[`${B}/layar/kos-1.webp`, 'Pilih peran'], [`${B}/layar/kos-2.webp`, 'Sisi penghuni'], [`${B}/layar/kos-3.webp`, 'Sisi pemilik']],
   },
-].map((a) => ({ ...a, url: `https://app-${a.slug}.pintuweb.id` }));
+].map((a) => ({ ...a, jenis: KELOMPOK[a.slug], url: `https://app-${a.slug}.pintuweb.id` }));
 
 export const JUMLAH = aplikasi.length;
 const ANGKA = ['Nol', 'Satu', 'Dua', 'Tiga', 'Empat', 'Lima', 'Enam', 'Tujuh', 'Delapan', 'Sembilan', 'Sepuluh', 'Sebelas', 'Dua belas'];

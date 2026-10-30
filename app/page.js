@@ -1,12 +1,16 @@
 import Image from 'next/image';
 import { aplikasi, JENIS, JUMLAH, NAMA_JUMLAH, bySlug } from './components/aplikasi-data';
-import { LANJUT, GALERI_LAIN, PINTUWEB, PAKET, METODE_BAYAR, HARGA_PER, WA_DISPLAY, JAM_KERJA, wa } from './components/pintuweb';
+import { LANJUT, BACA_JUGA, GALERI_LAIN, PINTUWEB, PAKET, METODE_BAYAR, HARGA_PER, WA_DISPLAY, JAM_KERJA, wa } from './components/pintuweb';
 import Saring from './components/saring';
+import GaleriLain from './components/galeri-lain';
+import BilahAksi from './components/bilah-aksi';
 
-const WA = wa('Halo PintuWeb, saya mau buat aplikasi mobile (Android & iOS) untuk usaha saya. Boleh minta info?');
+const WA = wa('Halo PintuWeb, saya mau buat aplikasi Android & iOS untuk usaha saya. Boleh minta info?');
+const LOGO = '/aplikasi-mobile/images/logo-pintuweb.png';
+const SLUGS = aplikasi.map((a) => a.slug);
 const warna = (a) => ({ '--m-bg': a.warna.bg, '--m-aksen': a.warna.aksen });
 const jumlahJenis = (id) => aplikasi.filter((a) => a.jenis === id).length;
-const SARINGAN = [{ id: 'semua', label: 'Semua', jumlah: JUMLAH }, ...JENIS.map((j) => ({ ...j, jumlah: jumlahJenis(j.id) }))];
+const SARINGAN = [{ id: 'semua', label: 'Semua', ket: '', jumlah: JUMLAH }, ...JENIS.map((j) => ({ ...j, jumlah: jumlahJenis(j.id) }))];
 
 /**
  * Fitur yang sungguh berjalan di demo, beserta aplikasi yang memilikinya (lihat aplikasi-data & tiap folder
@@ -139,8 +143,9 @@ function GlyphRak({ className = '' }) {
 function Logo({ gelap = false }) {
   return (
     <>
-      <span className="ikon grid h-9 w-9 shrink-0 place-items-center bg-limau text-tinta" aria-hidden="true">
-        <GlyphRak className="h-5 w-5" />
+      {/* logo pintu PintuWeb asli (367×512); di latar gelap diberi alas putih membulat */}
+      <span className={`flex shrink-0 items-center justify-center ${gelap ? 'rounded-lg bg-white px-2 py-1.5' : ''}`} aria-hidden="true">
+        <Image src={LOGO} alt="" width={367} height={512} sizes="64px" className={`w-auto ${gelap ? 'h-7' : 'h-8'}`} />
       </span>
       <span className="flex flex-col leading-none">
         <span className="font-display text-[1.02rem] font-bold tracking-tight">PintuWeb</span>{' '}
@@ -250,7 +255,7 @@ function KartuAplikasi({ a, i }) {
               <p className="mt-0.5 text-sm font-medium text-tinta-3">{a.kategori}</p>
             </div>
             <p className="ms-auto shrink-0 self-start text-right text-[11px] font-bold uppercase leading-snug tracking-[0.12em] text-tinta-3">
-              <span aria-hidden="true">No. {String(i + 1).padStart(2, '0')}</span><br />{JENIS.find((j) => j.id === a.jenis).label}
+              <span aria-hidden="true">No. {String(i + 1).padStart(2, '0')}</span><br />{JENIS.find((j) => j.id === a.jenis).label.split(' ')[0]}
             </p>
           </div>
 
@@ -280,9 +285,10 @@ function KartuAplikasi({ a, i }) {
             </div>
           </div>
 
-          <div className={`mt-5 grid gap-2.5 ${a.besar ? 'grid-cols-2 @2xl:flex @2xl:flex-wrap' : 'grid-cols-2'}`}>
+          <p className="mt-5 text-sm text-tinta-3">Aplikasi seperti ini: <strong className="font-semibold text-tinta">mulai {PAKET.mulai}</strong> · {PAKET.waktu}</p>
+          <div className={`mt-2.5 grid gap-2.5 ${a.besar ? 'grid-cols-2 @2xl:flex @2xl:flex-wrap' : 'grid-cols-2'}`}>
             <a href={a.url} target="_blank" rel="noopener noreferrer" className="tombol tombol-merek px-3">Buka {a.nama}</a>
-            <a href={wa(`Halo PintuWeb, saya tertarik aplikasi mobile seperti ${a.nama} (${a.kategori.toLowerCase()}). Boleh minta info?`)} target="_blank" rel="noopener noreferrer" className="tombol tombol-garis px-3">Pesan yang mirip</a>
+            <a href={wa(`Halo PintuWeb, saya tertarik aplikasi Android & iOS seperti contoh ${a.nama} (${a.url}). Boleh minta info?`)} target="_blank" rel="noopener noreferrer" className="tombol tombol-garis px-3">Pesan yang mirip</a>
           </div>
         </div>
       </article>
@@ -356,13 +362,16 @@ export default function PortalMobile() {
     <div id="atas" className="min-h-screen overflow-x-clip">
       <a href="#konten" className="lewati">Lewati ke konten</a>
 
-      {/* Jejak: portal ini bagian dari PintuWeb */}
-      <nav aria-label="Jejak" className="bg-tinta text-xs text-layar">
-        <ol className="wadah flex items-center gap-2 py-1.5">
-          <li><a href={PINTUWEB} className="font-semibold underline-offset-4 hover:underline">PintuWeb</a></li>
-          <li aria-hidden="true" className="opacity-60">/</li>
-          <li aria-current="page">Aplikasi Mobile</li>
-        </ol>
+      {/* Jejak: portal ini bagian dari PintuWeb; "Galeri lain" membuka daftar galeri yang lain */}
+      <nav aria-label="Jejak" className="gelap relative z-50 bg-tinta text-xs text-layar">
+        <div className="wadah flex items-center gap-2 py-1">
+          <ol className="flex items-center gap-2">
+            <li><a href={PINTUWEB} className="font-semibold underline-offset-4 hover:underline">PintuWeb</a></li>
+            <li aria-hidden="true" className="opacity-60">/</li>
+            <li aria-current="page">Aplikasi Mobile</li>
+          </ol>
+          <GaleriLain daftar={GALERI_LAIN} pintuweb={PINTUWEB} />
+        </div>
       </nav>
 
       <header className="sticky top-0 z-40 border-b border-garis bg-layar/85 backdrop-blur-xl">
@@ -378,27 +387,53 @@ export default function PortalMobile() {
             <a href="#harga" className="transition hover:text-tinta">Harga</a>
             <a href="#tanya" className="transition hover:text-tinta">Tanya jawab</a>
           </nav>
-          <a href={WA} target="_blank" rel="noopener noreferrer" className="tombol tombol-tinta min-h-10 shrink-0 px-4 text-sm">Pesan aplikasi</a>
+          <a href={WA} target="_blank" rel="noopener noreferrer" className="tombol tombol-tinta min-h-10 shrink-0 px-4 text-sm">Pesan aplikasi HP</a>
         </div>
       </header>
 
       <main id="konten" tabIndex={-1}>
         {/* Pahlawan: layar beranda berisi sepuluh ikon */}
-        <section aria-labelledby="judul-utama" className="relative">
-          <div className="wadah grid gap-10 pb-14 pt-10 sm:pt-14 lg:grid-cols-12 lg:items-center lg:gap-8 lg:pb-20 lg:pt-14">
-            <div className="lg:col-span-7">
+        <section id="pahlawan" aria-labelledby="judul-utama" className="relative">
+          <div className="wadah grid gap-8 pb-10 pt-6 sm:pt-14 md:gap-10 md:pb-14 lg:grid-cols-12 lg:items-center lg:gap-8 lg:pb-20 lg:pt-14">
+            <div className="min-w-0 lg:col-span-7">
               <p className="label">Galeri aplikasi mobile · {JUMLAH} demo</p>
-              <h1 id="judul-utama" className="mt-4 text-[2.5rem] sm:text-[3.6rem] lg:text-[4.1rem]">
+              <h1 id="judul-utama" className="mt-3 text-[2.05rem] sm:mt-4 sm:text-[3.6rem] lg:text-[4.1rem]">
                 {NAMA_JUMLAH} aplikasi Android &amp; iOS yang bisa kamu coba sekarang.
               </h1>
-              <p className="mt-5 max-w-xl text-[1.06rem] leading-relaxed text-tinta-2">
+              <p className="mt-3 text-[0.98rem] leading-relaxed text-tinta-2 md:hidden">
+                Kasir warung sampai aplikasi kos, tiap demo bisa kamu buka di HP.
+              </p>
+              <p className="mt-5 hidden max-w-xl text-[1.06rem] leading-relaxed text-tinta-2 md:block">
                 Kasir warung, booking pangkas rambut, aplikasi orang tua murid, sampai jadwal salat masjid. Tiap aplikasi dibuat dengan {PAKET.teknologi}: satu kode untuk Android, iOS, dan web. Usahanya fiktif, datanya tersimpan di perangkatmu, jadi silakan coba sepuasnya.
               </p>
-              <div className="mt-7 flex flex-wrap items-center gap-3">
+              <div className="mt-5 flex flex-wrap items-center gap-3 md:mt-7">
                 <a href="#aplikasi" className="tombol tombol-tinta">Buka rak aplikasi</a>
-                <a href="#harga" className="tombol tombol-garis">Harga &amp; alur kerja</a>
+                <a href="#harga" className="tombol tombol-garis max-md:hidden">Harga &amp; alur kerja</a>
+                <p className="text-sm font-semibold text-tinta-2 md:hidden">Mulai {PAKET.mulai} · {PAKET.waktu}</p>
               </div>
-              <dl className="mt-8 grid max-w-lg grid-cols-3 gap-px overflow-hidden rounded-2xl border border-garis bg-garis text-sm">
+
+              {/* Ponsel: strip demo yang bisa digeser, tepat di bawah tombol utama */}
+              <div className="mt-5 md:hidden">
+                <p id="strip-judul" className="text-xs font-bold uppercase tracking-[0.14em] text-tinta-3">Geser, lalu ketuk aplikasinya</p>
+                <ul aria-labelledby="strip-judul" className="strip -mx-4 mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2">
+                  {aplikasi.map((a) => (
+                    <li key={a.slug} className="w-[6.4rem] shrink-0 snap-start">
+                      <a href={`#${a.slug}`} className="strip-kartu block rounded-2xl" style={warna(a)}>
+                        <span className="ponsel block" style={{ padding: '0.22rem', borderRadius: '1.1rem' }}>
+                          <span className="ponsel-layar block" style={{ borderRadius: '0.9rem' }}>
+                            <Image src={a.layar[0][0]} alt="" fill sizes="96px" className="object-cover object-top" />
+                          </span>
+                        </span>
+                        <span className="mt-1.5 block truncate text-[0.82rem] font-bold leading-tight">{a.nama}</span>
+                        <span className="block truncate text-[0.72rem] leading-tight text-tinta-3">{a.kategori}</span>
+                        <span className="sr-only">, ke kartu {a.nama}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <dl className="mt-8 hidden max-w-lg grid-cols-3 gap-px overflow-hidden rounded-2xl border border-garis bg-garis text-sm md:grid">
                 <div className="bg-kaca px-3.5 py-3"><dt className="text-tinta-3">Mulai</dt><dd className="mt-0.5 font-display text-[1.05rem] font-bold">{PAKET.mulai}</dd></div>
                 <div className="bg-kaca px-3.5 py-3"><dt className="text-tinta-3">Pengerjaan</dt><dd className="mt-0.5 font-display text-[1.05rem] font-bold">{PAKET.waktu}</dd></div>
                 <div className="bg-kaca px-3.5 py-3"><dt className="text-tinta-3">Diserahkan</dt><dd className="mt-0.5 font-display text-[1.05rem] font-bold">File + kode</dd></div>
@@ -422,7 +457,7 @@ export default function PortalMobile() {
                 </p>
               </div>
               <div className="min-w-0 lg:col-span-5">
-                <Saring pilihan={SARINGAN.map(({ id, label, jumlah }) => ({ id, label, jumlah }))} />
+                <Saring pilihan={SARINGAN} slugs={SLUGS} />
               </div>
             </div>
 
@@ -592,7 +627,7 @@ export default function PortalMobile() {
         </section>
       </main>
 
-      <footer className="gelap bg-malam pb-6 pt-10 text-redup">
+      <footer id="kaki" className="gelap bg-malam pb-6 pt-10 text-redup max-md:pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
         <div className="wadah grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3">
           <div className="col-span-2 sm:col-span-1">
             <p className="flex items-center gap-2.5 text-white"><Logo gelap /></p>
@@ -606,6 +641,12 @@ export default function PortalMobile() {
               ))}
               <li><a href={WA} target="_blank" rel="noopener noreferrer" className="inline-block py-1 transition hover:text-white">WhatsApp <span className="whitespace-nowrap">{WA_DISPLAY}</span></a></li>
             </ul>
+            <p id="kaki-baca" className="label mt-5">Baca juga</p>
+            <ul aria-labelledby="kaki-baca" className="mt-2 space-y-1">
+              {BACA_JUGA.map((l) => (
+                <li key={l.href}><a href={l.href} className="inline-block py-1 transition hover:text-white">{l.label}</a></li>
+              ))}
+            </ul>
           </nav>
           <nav aria-labelledby="kaki-galeri" className="text-sm">
             <p id="kaki-galeri" className="label">Galeri lain</p>
@@ -618,6 +659,7 @@ export default function PortalMobile() {
         </div>
         <p className="wadah mt-10 border-t border-malam-garis pt-4 text-xs">© 2026 PintuWeb. Semua usaha di demo ini fiktif. Berlokasi di Tulungagung.</p>
       </footer>
+      <BilahAksi hrefWa={WA} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
     </div>
   );

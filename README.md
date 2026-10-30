@@ -10,7 +10,7 @@ Galeri demo aplikasi mobile PintuWeb: sepuluh aplikasi Android & iOS (kasir waru
 
 ## Konsep
 
-Bahasa layar ponsel. Pahlawan memuat layar beranda HP: widget, kisi ikon asli kesepuluh aplikasi, dan dok. Galeri berupa rak: tiap kartu punya panggung berwarna merek aplikasinya, dengan potret layar asli yang berdiri di atas rak kaca. Fitur ditulis sebagai widget bento yang menyebut aplikasi mana yang memilikinya, alur kerja sebagai tumpukan notifikasi di layar kunci, dan paket harga sebagai lembar info ala toko aplikasi. Rak bisa disaring per jenis (usaha, layanan, komunitas) tanpa memuat ulang halaman; tanpa JavaScript semua kartu tetap tampil.
+Bahasa layar ponsel. Pahlawan memuat layar beranda HP: widget, kisi ikon asli kesepuluh aplikasi, dan dok. Galeri berupa rak: tiap kartu punya panggung berwarna merek aplikasinya, dengan potret layar asli yang berdiri di atas rak kaca. Fitur ditulis sebagai widget bento yang menyebut aplikasi mana yang memilikinya, alur kerja sebagai tumpukan notifikasi di layar kunci, dan paket harga sebagai lembar info ala toko aplikasi. Rak bisa disaring menurut jenis usaha penggunanya (Toko & Kuliner, Jasa & Layanan, Pendidikan & Komunitas, Kantor & Properti, Acara & Hiburan) tanpa memuat ulang halaman, dan jumlah hasilnya diumumkan lewat aria-live; tanpa JavaScript semua kartu tetap tampil. Di ponsel ada strip demo yang bisa digeser, bilah aksi lengket (Lihat demo / Pesan via WhatsApp), dan menu "Galeri lain" di bilah jejak.
 
 ## Aplikasi yang dipamerkan (10)
 
@@ -26,6 +26,10 @@ Bahasa layar ponsel. Pahlawan memuat layar beranda HP: widget, kisi ikon asli ke
 - [Grendel](https://app-kos.pintuweb.id) — aplikasi kos untuk penghuni dan pemilik
 
 Ikon tiap aplikasi ada di `public/images/ikon/<slug>.webp` (dari `assets/icon.png` aplikasinya). Potret layar ada di `public/images/layar/<slug>-<n>.webp` (390×844, DPR 2, dipotret dari halaman live dengan `scripts/potret.mjs`). Varian WebP-nya dibuat `node scripts/static-images.mjs . --base /aplikasi-mobile`.
+
+## Tautan langsung per demo
+
+Tiap kartu punya `id` = slug demo: `kasir`, `booking`, `sekolah`, `member`, `antar`, `laundry`, `absensi`, `tiket`, `masjid`, `kos`. Contoh: https://www.pintuweb.id/aplikasi-mobile#antar. Halaman bergulir ke kartunya (memperhitungkan header lengket), menyorotnya sekitar 2 detik, dan mengembalikan saringan ke "Semua" bila kartunya sedang tersembunyi.
 
 ## Halaman
 
